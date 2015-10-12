@@ -3,6 +3,6 @@ Learning how to build a full backend API solution including token-based authenti
 
 I will be following this link best I can:
 
-    * [Token Based Authentication with Flask-Security](https://mandarvaze.github.io/2015/01/token-auth-with-flask-security.html)
+* [Token Based Authentication with Flask-Security](https://mandarvaze.github.io/2015/01/token-auth-with-flask-security.html)
 
 Any others I come across will be added here as well.

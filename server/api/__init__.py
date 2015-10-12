@@ -3,13 +3,13 @@ Setup API specific settings.
 '''
 
 from flask import Flask
-from api.models import User, Role
+from models import User, Role
 from flask.ext.sqlalchemy import SQLAlchemy, SQLAlchemyUserDatastore
 from flask.ext.security import Security
 from config import config
 
 app = Flask(__name__)
-app.config.from_object(config['DevelopmentConfig'])
+app.config.from_object(config['development'])
 db = SQLAlchemy()
 
 # Setup Flask-Security
@@ -28,3 +28,6 @@ def create_user():
             email='test@example.com', password='test123'
         )
         db.session.commit()
+
+if __name__ == '__main__':
+    app.run()
