@@ -1,5 +1,5 @@
-from .. import db
-#  from api import db
+#  from .. import db
+from api import db
 from flask.ext.security import RoleMixin
 
 

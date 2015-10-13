@@ -1,4 +1,4 @@
-from models import Base, roles_users
+from api.models.base import Base, roles_users
 from flask.ext.security import UserMixin
 from api import db
 
