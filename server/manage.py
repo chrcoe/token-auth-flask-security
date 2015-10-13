@@ -4,7 +4,7 @@ from flask import jsonify
 from flask.ext.script import Manager, Shell, Command, Server
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.security.datastore import SQLAlchemyUserDatastore
-from flask.ext.security import Security, auth_token_required
+from flask.ext.security import Security, http_auth_required
 
 from api import create_app, db
 from api.models import User, Role
@@ -45,7 +45,7 @@ class DBRegUser(Command):
 
 
 @app.route('/dummy-api/', methods=['GET'])
-@auth_token_required
+@http_auth_required
 def dummyAPI():
     ret_dict = {
         "Key1": "Value1",
