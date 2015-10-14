@@ -6,3 +6,9 @@ I will be following this link best I can:
 * [Token Based Authentication with Flask-Security](https://mandarvaze.github.io/2015/01/token-auth-with-flask-security.html)
 
 Any others I come across will be added here as well.
+
+get a token like this:
+
+POST testflask.local:5000/login with {"email":"email here", "password":"password here"}
+
+then use the token to authenticate to /dummy-api/ with Authentication-Token:"token here"

@@ -4,7 +4,10 @@ from flask import jsonify
 from flask.ext.script import Manager, Shell, Command, Server
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.security.datastore import SQLAlchemyUserDatastore
-from flask.ext.security import Security, http_auth_required
+from flask.ext.security import Security, auth_token_required
+from flask_security.utils import encrypt_password
+from sqlalchemy.exc import IntegrityError
+
 
 from api import create_app, db
 from api.models import User, Role
@@ -40,12 +43,21 @@ class DBRegUser(Command):
         self.db = db
 
     def run(self):
-        user_datastore.create_user(email='test@test.com', password='test')
-        self.db.session.commit()
+        for i in range(2):
+            try:
+                user_datastore.create_user(
+                    email='test{}@test.com'.format(i),
+                    password=encrypt_password('test'),
+                    first_name='John{}'.format(i),
+                    last_name='Doe{}'.format(i)
+                )
+                self.db.session.commit()
+            except IntegrityError:
+                pass
 
 
 @app.route('/dummy-api/', methods=['GET'])
-@http_auth_required
+@auth_token_required
 def dummyAPI():
     ret_dict = {
         "Key1": "Value1",
