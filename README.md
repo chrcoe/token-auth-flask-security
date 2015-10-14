@@ -9,6 +9,10 @@ Any others I come across will be added here as well.
 
 get a token like this:
 
-POST testflask.local:5000/login with {"email":"email here", "password":"password here"}
+    POST testflask.local:5000/login with {"email":"email here", "password":"password here"}
 
-then use the token to authenticate to /dummy-api/ with Authentication-Token:"token here"
+then use the token to authenticate to /dummy-api/ with Authentication-Token:"token here" using an HTTP GET
+
+**NOTE**: This requires CSRF to be turned off for Flask-WTF... This may not be the best thing.
+Additionally, the current release of Flask-Security does not allow us to expire tokens!
+The develop branch does currently do this.
